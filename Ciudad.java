@@ -9,7 +9,8 @@ public class Ciudad extends Item
     private double costo;
 
     /**
-     * Los objetos de tipo ciudad se crean con un nombre de la ciudad, un identificador y un costo de envío 
+     *Los objetos de tipo ciudad se crean con un nombre de la ciudad, un identificador y un costo de envío 
+     *@param costo double con el valor del costo del domicilio a esa ciudad
      */
     public Ciudad(int id,String nombre,double costo)
     {
@@ -17,6 +18,9 @@ public class Ciudad extends Item
         this.costo = costo;
     }
     
+    /**
+     * Obtiene el costo del Domicilio a esta ciudad
+     */
     public double getCosto()
     {
         return this.costo;
@@ -32,12 +36,21 @@ public class Ciudad extends Item
         this.costo = costo;
     }
     
+    /**
+     * Obtiene la información de la ciudad
+     *@return String con la información
+    */
     public String toString()
     {
         String ciudad = super.toString();
         return ciudad + getCosto();
     }
     
+    /**
+     * Permite saber si dos objetos de esta clase son iguales
+     * @param obj recibe un objeto
+     *@return false si no son iguales y true si lo son
+    */
     public boolean equals (Object obj) 
     {
         if (obj instanceof Ciudad && super.equals(obj) )

@@ -459,7 +459,7 @@ public class Flamma
                              case 5:
                                 System.out.println("¿Qué desea modificar del producto?");
                                 System.out.println("1. Nombre producto         2. descripción");
-                                System.out.println("3. costo                   3. Aumentar cantiad en stock");
+                                System.out.println("3. costo                   4. Aumentar cantiad en stock");
                                 myObj = new Scanner(System.in);
                                 entrad = myObj.nextInt();
                                 System.out.println(productos.getObjetos()+"\n");
@@ -543,10 +543,10 @@ public class Flamma
                                     entrad = myObj.nextInt();
                                     System.out.println("La cantidad a aumentar en stock del producto");
                                     myObj = new Scanner(System.in);
-                                    entrad = myObj.nextInt();
+                                    entrada = myObj.nextInt();
                                     if(productos.getObjeto(entrad)!=null)
                                     {
-                                        if(((Producto) productos.getObjeto(entrad)).aumentaCantidad(entrad))
+                                        if(((Producto) productos.getObjeto(entrad)).aumentaCantidad(entrada))
                                         {
                                             System.out.println("Cantidad aumentada exitosamente\n");
                                         }
@@ -985,16 +985,25 @@ public class Flamma
                                             break;
                                         case 4:
                                             pe = false;
-                                            if(pedidos.addElemento(ped))
+                                            if(ped.ConfirmarPedido())
                                             {
-                                                ped = null;
-                                                System.out.println("Su pedido se ha registrado, gracias por su compra"+"\n\n");
-                                                carro.vaciarCarrito();
+                                                if(pedidos.addElemento(ped))
+                                                {
+                                                    ped = null;
+                                                    System.out.println("Su pedido se ha registrado, gracias por su compra"+"\n\n");
+                                                    carro.vaciarCarrito();
+                                                }
+                                                else
+                                                {
+                                                    System.out.println("Su pedido no se ha registrado\n\n");
+                                                }
                                             }
                                             else
                                             {
-                                                System.out.println("Su pedido no se ha registrado\n\n");
+                                                System.out.println("Está intentando comprar un producto que no tine suficiente stock"+"\n\n");
+                                                carro.vaciarCarrito();
                                             }
+                                            
                                             break;
                                         default:
                                             System.out.println("opción no válida\n\n");

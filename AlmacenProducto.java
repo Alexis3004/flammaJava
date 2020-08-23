@@ -1,12 +1,18 @@
 import java.util.*;
 /**
- * 
+ * Se encarga de almacenar los productos que se le presentarán al cliente
  * 
  * @author Alexis Cáceres & Jenny Santamaría
  * @version 2
  */
 public class AlmacenProducto extends Almacen
 {
+    /**
+     * Obtiene un ArrayList con todos los productos que pertenecen a un objeto clasificador
+     * ya sea una categoría o una colección
+     * @param Item clasificador
+     * @return ArrayList de Items que pertencen al clasificador
+     */
     public ArrayList<Item> getProductosClasificacion(Item clf)
     {
        ArrayList<Item> del = new ArrayList();
@@ -27,6 +33,11 @@ public class AlmacenProducto extends Almacen
        return del;
     }
     
+    /**
+     * permite eliminar los productos de alguna categoria o coleccion
+     * @param clf objeto de cualquier categoria o coleccion
+     * @return true si se pudieron eliminar los productos de esa categoria o coleccion, false si no se pudo eliminar
+    */
     public boolean delProductoClasificacion(Item clf)
     {
         ArrayList<Item> del = getProductosClasificacion(clf);
@@ -41,6 +52,11 @@ public class AlmacenProducto extends Almacen
         return false;
     }
     
+    /**
+     * permite clasificar los productos en categorias o colecciones
+     * @param clf objeto de cualquier categoria o coleccion
+     * @return String con la informacion de todos los productos que pertenecen a cierta clasificacion 
+    */
     public String getObjetosClasificacion(Item clf)
     {
         if(Almacen.size()>0)

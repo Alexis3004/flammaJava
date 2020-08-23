@@ -9,7 +9,8 @@ public class Cupon extends Item
     private double descuento;
 
     /**
-     * El cupón se crea con un identificador o nombre y el valor de descuento que proporciona
+     *El cupón se crea con un identificador, un nombre y el valor de descuento que proporciona
+     *@param descuento double con el porcentaje de descuento que brinda
      */
     public Cupon(int id,String nombre,double descuento)
     {
@@ -17,14 +18,18 @@ public class Cupon extends Item
         this.descuento = descuento;
     }
     
+    /**
+     * Obtiene el descuento que brinda el cupón
+     */
     public double getDescuento()
     {
         return this.descuento;
     }
     
     /**
-     * con éste método s pued cambiar el valor de descuento qu el cupón ejerce sobre un Cupon
-     * @param  dscuento un número flotante con el porcntaje de descunto que aplica a una compra
+     * con éste método se puede cambiar el valor de descuento que el cupón ejerce
+     * @param  descuento un número double con el porcentaje de descuento que aplica a una compra
+     * @return valor del descuento nuevo
     */
     public double setDescuento(double descuento)
     {
@@ -32,12 +37,21 @@ public class Cupon extends Item
         return this.descuento;
     }
     
+    /**
+     * Obtiene la información del cupón
+     *@return String con la información
+    */
     public String toString()
     {
         String cupon = super.toString();
         return cupon + getDescuento();
     }
     
+    /**
+     * Permite saber si dos objetos de esta clase son iguales
+     * @param obj recibe un objeto
+     *@return false si no son iguales y true si lo son
+    */
     public boolean equals (Object obj) 
     {
         if (obj instanceof Cupon && super.equals(obj) )
