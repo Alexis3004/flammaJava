@@ -16,12 +16,12 @@ public class Categoria extends Item
         this.descripcion = descripcion;
     }
     
-    protected String getDescripcion()
+    public String getDescripcion()
     {
         return this.descripcion;
     }
     
-    protected String setdescripcion(String descripcion)
+    public String setdescripcion(String descripcion)
     {
         this.descripcion = descripcion;
         return this.descripcion;

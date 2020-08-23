@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 /**
  * 
  * 
@@ -20,6 +21,25 @@ public class Almacen
         return this.Almacen;
     }
     
+    public ArrayList<Item> getListaFE()
+    {
+        ArrayList<Item> EN = new ArrayList();
+        if(Almacen.size()>0 && (Almacen.get(0) instanceof Pedido))
+        {
+            for(Item it: Almacen)
+            {
+                if(((Pedido) it).getEstado().equals("no enviado"))
+                {
+                    EN.add(it);
+                }
+            }
+            return EN;
+        }
+        else
+        {
+            return EN;
+        }
+    }
     public int getNumeroObjetos()
     {
         return this.Almacen.size();
@@ -190,5 +210,31 @@ public class Almacen
     public void vaciarAlmacen()
     {
         Almacen.clear();
+    }
+    
+    public String getProductosMV()
+    {
+        if(compras.size()>0)
+        {
+            final HashMap<Item, Integer> sortedByCount = sortByValue(compras);
+            String pr = "";
+            for(Item it: sortedByCount.keySet())
+            {
+                pr += it.getId()+"   "+it.getNombre()+"      cantidad: "+compras.get(it)+"\n";
+            }
+            return pr;
+        }
+        else
+        {
+            return "No se han vendido productos";
+        }
+    }
+    
+
+    public static HashMap<Item, Integer> sortByValue(final Map<Item, Integer> wordCounts) {
+        return wordCounts.entrySet()
+                .stream()
+                .sorted((Map.Entry.<Item, Integer>comparingByValue().reversed()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
     }
 }

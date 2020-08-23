@@ -70,7 +70,7 @@ public class Producto extends Item
      * @param costo int con el nuevo costo del producto, debe ser mayor que cero
      *@return false si no se puede cambiar el costo, true si se puede cambiar el costo
     */
-    public boolean setCosto(int costo)
+    public boolean setCosto(double costo)
     {
         if(costo>0)
         {

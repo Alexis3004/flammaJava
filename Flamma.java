@@ -97,6 +97,7 @@ public class Flamma
                                 System.out.println("Descuento que ofrece:");
                                 myObj = new Scanner(System.in);
                                 cost = myObj.nextDouble();
+                                System.out.println("costo "+cost);
                                 if(cupones.addElemento(new Cupon(entrada,usuario,cost)))
                                 {
                                     System.out.println("Cupón agregado correctamente\n");
@@ -202,6 +203,420 @@ public class Flamma
                         }
                         break;
                      case 2:
+                        opcion = true;
+                        while(opcion)
+                        {
+                            System.out.println("Seleccione lo que desea modificar");
+                            System.out.println("1.Ciudades                 2. Cupones");
+                            System.out.println("3. Categorías              4. Colecciones");
+                            System.out.println("5. Productos               6. Pedidos");
+                            System.out.println("7. Salir");
+                            myObj = new Scanner(System.in);
+                            entrad = myObj.nextInt();
+                            switch (entrad) 
+                            {
+                             case 1:
+                                System.out.println("¿Qué desea modificar de la ciudad?");
+                                System.out.println("1. Nombre ciudad           2. costo envío");
+                                myObj = new Scanner(System.in);
+                                entrad = myObj.nextInt();
+                                System.out.println(ciudades.getObjetos()+"\n");
+                                switch (entrad) 
+                                {
+                                 case 1:
+                                    System.out.println("Digite el id de la ciudad a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo nombre");
+                                    myObj = new Scanner(System.in);
+                                    usuario = myObj.nextLine();
+                                    if(ciudades.getObjeto(entrad)!=null)
+                                    {
+                                        ciudades.getObjeto(entrad).setNombre(usuario);
+                                        if(ciudades.getObjeto(entrad).getNombre().equals(usuario))
+                                        {
+                                            System.out.println("Nombre modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El nombre no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Ciudad no encontrada\n");
+                                    }
+                                    break;
+                                 case 2:
+                                    System.out.println("Digite el id de la ciudad a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo costo");
+                                    myObj = new Scanner(System.in);
+                                    entrada = myObj.nextInt();
+                                    if(ciudades.getObjeto(entrad)!=null)
+                                    {
+                                        ((Ciudad) ciudades.getObjeto(entrad)).setCosto(entrada);
+                                        if(((Ciudad) ciudades.getObjeto(entrad)).getCosto()==entrada)
+                                        {
+                                            System.out.println("costo modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El costo no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Ciudad no encontrada\n");
+                                    }
+                                    break;
+                                 default:
+                                    System.out.println("Por favor ingrese una expresión válida \n\n");
+                                }
+                                break;
+                             case 2:
+                                System.out.println("¿Qué desea modificar del cupón?");
+                                System.out.println("1. Nombre cupón            2. descuento");
+                                myObj = new Scanner(System.in);
+                                entrad = myObj.nextInt();
+                                System.out.println(cupones.getObjetos()+"\n");
+                                switch (entrad) 
+                                {
+                                 case 1:
+                                    System.out.println("Digite el id del cupón a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo nombre");
+                                    myObj = new Scanner(System.in);
+                                    usuario = myObj.nextLine();
+                                    if(cupones.getObjeto(entrad)!=null)
+                                    {
+                                        cupones.getObjeto(entrad).setNombre(usuario);
+                                        if(cupones.getObjeto(entrad).getNombre().equals(usuario))
+                                        {
+                                            System.out.println("Nombre modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El nombre no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Cupón no encontrado\n");
+                                    }
+                                    break;
+                                 case 2:
+                                    System.out.println("Digite el id del cupón a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo descuento");
+                                    myObj = new Scanner(System.in);
+                                    cost = myObj.nextDouble();
+                                    if(cupones.getObjeto(entrad)!=null)
+                                    {
+                                        ((Cupon) cupones.getObjeto(entrad)).setDescuento(cost);
+                                        if(((Cupon) cupones.getObjeto(entrad)).getDescuento()==cost)
+                                        {
+                                            System.out.println("descuento modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El descuento no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Cupón no encontrado\n");
+                                    }
+                                    
+                                    break;
+                                 default:
+                                    System.out.println("Por favor ingrese una expresión válida \n\n");
+                                }
+                                break;
+                             case 3:
+                                System.out.println("¿Qué desea modificar de la categoría?");
+                                System.out.println("1. Nombre categoría        2. descripción categoría");
+                                myObj = new Scanner(System.in);
+                                entrad = myObj.nextInt();
+                                System.out.println(categorias.getObjetos()+"\n");
+                                switch (entrad) 
+                                {
+                                 case 1:
+                                    System.out.println("Digite el id de la categoría a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo nombre");
+                                    myObj = new Scanner(System.in);
+                                    usuario = myObj.nextLine();
+                                    if(categorias.getObjeto(entrad)!=null)
+                                    {
+                                        categorias.getObjeto(entrad).setNombre(usuario);
+                                        if(categorias.getObjeto(entrad).getNombre().equals(usuario))
+                                        {
+                                            System.out.println("Nombre modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El nombre no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Categoría no encontrada\n");
+                                    }
+                                    break;
+                                 case 2:
+                                    System.out.println("Digite el id de la categoría a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite la nueva descripcion");
+                                    myObj = new Scanner(System.in);
+                                    direccion = myObj.nextLine();
+                                    if(categorias.getObjeto(entrad)!=null)
+                                    {
+                                        ((Categoria) categorias.getObjeto(entrad)).setdescripcion(direccion);
+                                        if(((Categoria) categorias.getObjeto(entrad)).getDescripcion()==direccion)
+                                        {
+                                            System.out.println("Descripción modificada exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("La Descripción no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Categoria no encontrada\n");
+                                    }
+                                    break;
+                                 default:
+                                    System.out.println("Por favor ingrese una expresión válida \n\n");
+                                }
+                                break;
+                             case 4:
+                                System.out.println("¿Qué desea modificar de la colección?");
+                                System.out.println("1. Nombre colección        2. descripción colección");
+                                myObj = new Scanner(System.in);
+                                entrad = myObj.nextInt();
+                                System.out.println(colecciones.getObjetos()+"\n");
+                                switch (entrad) 
+                                {
+                                 case 1:
+                                    System.out.println("Digite el id de la colección a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo nombre");
+                                    myObj = new Scanner(System.in);
+                                    usuario = myObj.nextLine();
+                                    if(colecciones.getObjeto(entrad)!=null)
+                                    {
+                                        colecciones.getObjeto(entrad).setNombre(usuario);
+                                        if(colecciones.getObjeto(entrad).getNombre().equals(usuario))
+                                        {
+                                            System.out.println("Nombre modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El nombre no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Colección no encontrada\n");
+                                    }
+                                    break;
+                                 case 2:
+                                    System.out.println("Digite el id de la colección a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite la nueva descripcion");
+                                    myObj = new Scanner(System.in);
+                                    direccion = myObj.nextLine();
+                                    if(colecciones.getObjeto(entrad)!=null)
+                                    {
+                                        ((Coleccion) colecciones.getObjeto(entrad)).setdescripcion(direccion);
+                                        if(((Coleccion) colecciones.getObjeto(entrad)).getDescripcion().equals(direccion))
+                                        {
+                                            System.out.println("Descripción modificada exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("La Descripción no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Coleccion no encontrada\n");
+                                    }
+                                    break;
+                                 default:
+                                    System.out.println("Por favor ingrese una expresión válida \n\n");
+                                }
+                                break;
+                             case 5:
+                                System.out.println("¿Qué desea modificar del producto?");
+                                System.out.println("1. Nombre producto         2. descripción");
+                                System.out.println("3. costo                   3. Aumentar cantiad en stock");
+                                myObj = new Scanner(System.in);
+                                entrad = myObj.nextInt();
+                                System.out.println(productos.getObjetos()+"\n");
+                                switch (entrad) 
+                                {
+                                 case 1:
+                                    System.out.println("Digite el id del producto a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo nombre");
+                                    myObj = new Scanner(System.in);
+                                    usuario = myObj.nextLine();
+                                    if(productos.getObjeto(entrad)!=null)
+                                    {
+                                        productos.getObjeto(entrad).setNombre(usuario);
+                                        if(productos.getObjeto(entrad).getNombre().equals(usuario))
+                                        {
+                                            System.out.println("Nombre modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El nombre no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("producto no encontrado\n");
+                                    }
+                                    break;
+                                 case 2:
+                                    System.out.println("Digite el id del producto a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite la nueva descripción");
+                                    myObj = new Scanner(System.in);
+                                    direccion = myObj.nextLine();
+                                    if(productos.getObjeto(entrad)!=null)
+                                    {
+                                        ((Producto) productos.getObjeto(entrad)).setDescripcion(direccion);
+                                        if(((Producto) productos.getObjeto(entrad)).getDescripcion().equals(direccion))
+                                        {
+                                            System.out.println("Descripcion modificada exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("La descripcion no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Producto no encontrado\n");
+                                    }
+                                    break;
+                                 case 3:
+                                    System.out.println("Digite el id del producto a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("Digite el nuevo costo");
+                                    myObj = new Scanner(System.in);
+                                    cost = myObj.nextDouble();
+                                    if(productos.getObjeto(entrad)!=null)
+                                    {
+                                        ((Producto) productos.getObjeto(entrad)).setCosto(cost);
+                                        if(((Producto) productos.getObjeto(entrad)).getCosto()==cost)
+                                        {
+                                            System.out.println("Costo modificado exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("El costo no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Producto no encontrado\n");
+                                    }
+                                    break;
+                                 case 4:
+                                    System.out.println("Digite el id del producto a modificar");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    System.out.println("La cantidad a aumentar en stock del producto");
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    if(productos.getObjeto(entrad)!=null)
+                                    {
+                                        if(((Producto) productos.getObjeto(entrad)).aumentaCantidad(entrad))
+                                        {
+                                            System.out.println("Cantidad aumentada exitosamente\n");
+                                        }
+                                        else
+                                        {
+                                            System.out.println("La cantidad no se modificó\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Producto no encontrado\n");
+                                    }
+                                    break;
+
+                                 default:
+                                    System.out.println("Por favor ingrese una expresión válida \n\n");
+                                }
+                                break;
+                             case 6:
+                                ArrayList<Item> pediFE = pedidos.getListaFE();
+                                if(pediFE.size()>0)
+                                {
+                                    System.out.println("Listado de pedidos pendientes de envío");
+                                    for(Item it: pediFE)
+                                    {
+                                      System.out.println(it.toString());  
+                                    }
+                                    System.out.println("\n"); 
+                                    System.out.println("Ingrese el código del pedido que desea modificar el estado"); 
+                                    myObj = new Scanner(System.in);
+                                    entrad = myObj.nextInt();
+                                    if(pedidos.getObjeto(entrad)!=null)
+                                    {
+                                        if(((Pedido) pedidos.getObjeto(entrad)).getEstado().equals("no enviado"))
+                                        {
+                                            System.out.println("Ingrese el nuevo estado del pedido"); 
+                                            myObj = new Scanner(System.in);
+                                            usuario = myObj.nextLine();
+                                            ((Pedido) pedidos.getObjeto(entrad)).setEstado(usuario);
+                                            if(((Pedido) pedidos.getObjeto(entrad)).getEstado().equals(usuario))
+                                            {
+                                                System.out.println("Estado modificado exitosamente\n"); 
+                                            }
+                                            else
+                                            {
+                                                System.out.println("Estado no modificado\n"); 
+                                            }
+                                        }
+                                        else
+                                        {
+                                           System.out.println("El pedido ya fué enviado\n\n");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        System.out.println("Pedido no encontrado\n\n"); 
+                                    }
+                                }
+                                else
+                                {
+                                    System.out.println("No hay productos con falta de envío\n\n");
+                                }
+                                break;
+                             case 7:
+                                opcion = false;
+                                break;
+                             default:
+                                System.out.println("Por favor ingrese una expresión válida \n\n");
+                            }
+                        }
                         break;
                      case 3:
                         opcion = true;
@@ -308,27 +723,41 @@ public class Flamma
                             System.out.println("Seleccione lo que desea ver");
                             System.out.println("1.Ciudades                 2. Cupones");
                             System.out.println("3. Categorías              4. Colecciones");
-                            System.out.println("5. Productos               6. Salir");
+                            System.out.println("5. Productos               6. Productos más vendidos");
+                            System.out.println("7. Todos los pedidos       8. Salir");
                             myObj = new Scanner(System.in);
                             entrad = myObj.nextInt();
                             switch (entrad) 
                             {
                              case 1:
+                                System.out.println("Lista de ciudades");
                                 System.out.println(ciudades.getObjetos()+"\n");
                                 break;
                              case 2:
+                                System.out.println("Lista de cupones");   
                                 System.out.println(cupones.getObjetos()+"\n");
                                 break;
                              case 3:
+                                System.out.println("Lista de categorias"); 
                                 System.out.println(categorias.getObjetos()+"\n");
                                 break;
                              case 4:
+                                System.out.println("Lista de colecciones"); 
                                 System.out.println(colecciones.getObjetos()+"\n");
                                 break;
                              case 5:
+                                System.out.println("Lista de productos"); 
                                 System.out.println(productos.getObjetos()+"\n");
                                 break;
                              case 6:
+                                System.out.println("Lista de productos más vendidos"); 
+                                System.out.println(pedidos.getProductosMV()+"\n");
+                                break;
+                             case 7:
+                                System.out.println("Lista de todos los pedidos"); 
+                                System.out.println(pedidos.getObjetos()+"\n");
+                                break;
+                             case 8:
                                 opcion = false;
                                 break;
                              default:

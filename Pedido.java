@@ -134,6 +134,7 @@ public class Pedido extends Item
         pedido = pedido + "dirección: "+getDireccion()+"\n";
         pedido = pedido + "ciudad: "+getCiudad()+"\n";
         pedido = pedido + "cliente: "+super.getNombre()+"\n";
+        pedido = pedido + "estado: "+this.getEstado()+"\n";
         pedido = pedido + "total: "+getTotal()+"\n";
         return pedido;
     }
