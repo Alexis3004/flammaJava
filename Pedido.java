@@ -14,9 +14,9 @@ public class Pedido extends Item
     private double costoDomi;
     private double total;
     private double subtotal;
-    private Item descuento;
     private String estado;
     private HashMap<Producto, Integer> detalle;
+    private double descu;
     /**
      * Se crea el pedido con un número de pedido,una fecha de realización del pedido, un usuario propietario del pedido
      * una ciudad a la que va el pedido, una dirección de envío, un estado del pedido que inicialmente será no enviado y
@@ -30,11 +30,11 @@ public class Pedido extends Item
         this.direccion = direccion;
         this.detalle = car;
         this.subtotal = subtotal;
-        this.descuento = null;
         this.estado = "no enviado";
         this.ciudad = ciudad;
         this.costoDomi = costo;
         this.total = subtotal + costo;
+        this.descu = 0;
     }
     
     public String getFecha()
@@ -54,11 +54,7 @@ public class Pedido extends Item
     
     public double getDescuento()
     {
-        if(descuento != null)
-        {
-            return ((Cupon) descuento).getDescuento();
-        }
-        return 0;
+        return this.descu;
     }
     
     public String getEstado()
@@ -97,8 +93,8 @@ public class Pedido extends Item
         {
             if(cup.getNombre().equals(cupon))
             {
-                this.descuento = cup;
-                this.total = (subtotal-(subtotal*((Cupon) cup).getDescuento())) + getCostoDomi();
+                this.descu = ((Cupon)cup).getDescuento();
+                this.total = (subtotal-(subtotal*descu)) + getCostoDomi();
                 return true;
             }
         }

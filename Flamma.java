@@ -28,6 +28,10 @@ public class Flamma
         String usuario;
         int ciudad;
         String direccion;
+        int fil;
+        boolean rolCliente;
+        boolean opcion;
+        double cost;
         while(inicio)
         {
             System.out.println("Bienvenido a Flamma Shop");
@@ -39,12 +43,310 @@ public class Flamma
             switch (rol) 
             {
               case 1:
-                System.out.println("Es Administrador");
+                rolCliente = true;
+                while(rolCliente)
+                {
+                    System.out.println("Menú Administrador:");
+                    System.out.println("1. Agregar                 2. modificar");
+                    System.out.println("3. eliminar                4. Ver");
+                    System.out.println("5. Salir de la sesión del administrador");
+                    myObj = new Scanner(System.in);
+                    entrada = myObj.nextInt();
+                    switch (entrada) 
+                    {
+                     case 1:
+                        opcion = true;
+                        while(opcion)
+                        {
+                            System.out.println("Seleccione lo que desea agregar");
+                            System.out.println("1.Ciudades                 2. Cupones");
+                            System.out.println("3. Categorías              4. Colecciones");
+                            System.out.println("5. Productos               6. Salir");
+                            myObj = new Scanner(System.in);
+                            entrad = myObj.nextInt();
+                            switch (entrad) 
+                            {
+                             case 1:
+                                System.out.println("Ingrese los siguientes datos\n");
+                                System.out.println("Id de la ciudad:");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                System.out.println("Nombre de la ciudad:");
+                                myObj = new Scanner(System.in);
+                                usuario = myObj.nextLine();
+                                System.out.println("Costo domicilio:");
+                                myObj = new Scanner(System.in);
+                                cost = myObj.nextDouble();
+                                if(ciudades.addElemento(new Ciudad(entrada,usuario,cost)))
+                                {
+                                    System.out.println("Ciudad agregada correctamente\n");
+                                }
+                                else
+                                {
+                                    System.out.println("La ciudad no se agregó\n");
+                                }
+                                break;
+                             case 2:
+                                System.out.println("Ingrese los siguientes datos\n");
+                                System.out.println("Id del cupón:");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                System.out.println("Nombre del cupón:");
+                                myObj = new Scanner(System.in);
+                                usuario = myObj.nextLine();
+                                System.out.println("Descuento que ofrece:");
+                                myObj = new Scanner(System.in);
+                                cost = myObj.nextDouble();
+                                if(cupones.addElemento(new Cupon(entrada,usuario,cost)))
+                                {
+                                    System.out.println("Cupón agregado correctamente\n");
+                                }
+                                else
+                                {
+                                    System.out.println("El cupón no se agregó\n");
+                                }
+                                break;
+                             case 3:
+                                System.out.println("Ingrese los siguientes datos\n");
+                                System.out.println("Id de la categoría:");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                System.out.println("Nombre de la categoría:");
+                                myObj = new Scanner(System.in);
+                                usuario = myObj.nextLine();
+                                System.out.println("Descripción:");
+                                myObj = new Scanner(System.in);
+                                direccion = myObj.nextLine();
+                                if(categorias.addElemento(new Categoria(entrada,usuario,direccion)))
+                                {
+                                    System.out.println("Categoría agregada correctamente\n");
+                                }
+                                else
+                                {
+                                    System.out.println("La categoría no se agregó\n");
+                                }
+                                break;
+                             case 4:
+                                System.out.println("Ingrese los siguientes datos\n");
+                                System.out.println("Id de la colección:");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                System.out.println("Nombre de la colección:");
+                                myObj = new Scanner(System.in);
+                                usuario = myObj.nextLine();
+                                System.out.println("Descripción:");
+                                myObj = new Scanner(System.in);
+                                direccion = myObj.nextLine();
+                                System.out.println("fecha de lanzamiento:");
+                                myObj = new Scanner(System.in);
+                                if(colecciones.addElemento(new Coleccion(entrada,usuario,direccion,myObj.nextLine())))
+                                {
+                                    System.out.println("Colección agregada correctamente\n");
+                                }
+                                else
+                                {
+                                    System.out.println("La colección no se agregó\n");
+                                }
+                                break;
+                             case 5:
+                                System.out.println("Ingrese los siguientes datos\n");
+                                System.out.println("Referencia:");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                System.out.println("nombre:");
+                                myObj = new Scanner(System.in);
+                                usuario = myObj.nextLine();
+                                System.out.println("Costo:");
+                                myObj = new Scanner(System.in);
+                                cost = myObj.nextDouble();
+                                System.out.println("Descripción:");
+                                myObj = new Scanner(System.in);
+                                direccion = myObj.nextLine();
+                                System.out.println("talla:");
+                                myObj = new Scanner(System.in);
+                                String talla = myObj.nextLine();
+                                System.out.println("cantidad:");
+                                myObj = new Scanner(System.in);
+                                int canti = myObj.nextInt();
+                                System.out.println("Id categoría:");
+                                System.out.println(categorias.getObjetos());
+                                myObj = new Scanner(System.in);
+                                int cat = myObj.nextInt();
+                                System.out.println("Id Colección:");
+                                System.out.println(colecciones.getObjetos());
+                                myObj = new Scanner(System.in);
+                                int col = myObj.nextInt();
+                                if(categorias.getObjeto(cat)!=null && colecciones.getObjeto(col)!=null)
+                                {
+                                    if(productos.addElemento(new Producto(entrada,usuario,cost,direccion,talla,canti,categorias.getObjeto(cat),
+                                    colecciones.getObjeto(col))))
+                                    {
+                                        System.out.println("Producto agregado correctamente\n");
+                                    }
+                                    else
+                                    {
+                                        System.out.println("El producto no se agregó\n");
+                                    }
+                                }
+                                else
+                                {
+                                    System.out.println("Categoría o coleccion no encontrada\n");
+                                }
+                                break;
+                             case 6:
+                                opcion = false;
+                                break;
+                             default:
+                                System.out.println("Por favor ingrese una expresión válida \n\n");
+                            }
+                        }
+                        break;
+                     case 2:
+                        break;
+                     case 3:
+                        opcion = true;
+                        while(opcion)
+                        {
+                            System.out.println("Seleccione lo que desea eliminar");
+                            System.out.println("1.Ciudades                 2. Cupones");
+                            System.out.println("3. Categorías              4. Colecciones");
+                            System.out.println("5. Productos               6. Salir");
+                            Item cat;
+                            myObj = new Scanner(System.in);
+                            entrad = myObj.nextInt();
+                            switch (entrad) 
+                            {
+                             case 1:
+                                System.out.println("\nIngrese el id de la ciudad a eliminar\n");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                cat = ciudades.getObjeto(entrada);
+                                if(ciudades.EliminarElemento(entrada))
+                                {
+                                    System.out.println("Ciudad eliminada correctamente");
+                                    System.out.println(cat+"\n");
+                                }
+                                else
+                                {
+                                    System.out.println("ciudad no encontrada\n");
+                                }
+                                break;
+                             case 2:
+                                System.out.println("\nIngrese el id del cupón a eliminar\n");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                cat = cupones.getObjeto(entrada);
+                                if(cupones.EliminarElemento(entrada))
+                                {
+                                    System.out.println("Cupón eliminado correctamento");
+                                    System.out.println(cat+"\n");
+                                }
+                                else
+                                {
+                                    System.out.println("cupón no encontrado\n");
+                                }
+                                break;
+                             case 3:
+                                System.out.println("\nIngrese el id de la categoría a eliminar\n");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                cat = categorias.getObjeto(entrada);
+                                if(categorias.EliminarElemento(entrada))
+                                {
+                                    productos.delProductoClasificacion(cat);
+                                    System.out.println("Categoría eliminada correctamente");
+                                    System.out.println(cat+"\n");
+                                }
+                                else
+                                {
+                                    System.out.println("categoría no encontrada\n");
+                                }
+                                break;
+                             case 4:
+                                System.out.println("\nIngrese el id de la colección a eliminar\n");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                cat = colecciones.getObjeto(entrada);
+                                if(colecciones.EliminarElemento(entrada))
+                                {
+                                    productos.delProductoClasificacion(cat);
+                                    System.out.println("Colección eliminada correctamente");
+                                    System.out.println(cat+"\n");
+                                }
+                                else
+                                {
+                                    System.out.println("Colección no encontrada\n");
+                                }
+                                break;
+                             case 5:
+                                System.out.println("\nIngrese el id del producto a eliminar");
+                                myObj = new Scanner(System.in);
+                                entrada = myObj.nextInt();
+                                cat = productos.getObjeto(entrada);
+                                if(productos.EliminarElemento(entrada))
+                                {
+                                    System.out.println("Producto eliminado correctamente\n");
+                                    System.out.println(cat+"\n");
+                                }
+                                else
+                                {
+                                    System.out.println("Producto no encontrado\n");
+                                }
+                                break;
+                             case 6:
+                                opcion = false;
+                                break;
+                             default:
+                                System.out.println("Por favor ingrese una expresión válida \n\n");
+                            }
+                        }
+                        break;
+                     case 4:
+                        opcion = true;
+                        while(opcion)
+                        {
+                            System.out.println("Seleccione lo que desea ver");
+                            System.out.println("1.Ciudades                 2. Cupones");
+                            System.out.println("3. Categorías              4. Colecciones");
+                            System.out.println("5. Productos               6. Salir");
+                            myObj = new Scanner(System.in);
+                            entrad = myObj.nextInt();
+                            switch (entrad) 
+                            {
+                             case 1:
+                                System.out.println(ciudades.getObjetos()+"\n");
+                                break;
+                             case 2:
+                                System.out.println(cupones.getObjetos()+"\n");
+                                break;
+                             case 3:
+                                System.out.println(categorias.getObjetos()+"\n");
+                                break;
+                             case 4:
+                                System.out.println(colecciones.getObjetos()+"\n");
+                                break;
+                             case 5:
+                                System.out.println(productos.getObjetos()+"\n");
+                                break;
+                             case 6:
+                                opcion = false;
+                                break;
+                             default:
+                                System.out.println("Por favor ingrese una expresión válida \n\n");
+                            }
+                        }
+                        break;
+                     case 5:
+                        rolCliente = false;
+                        break;
+                     default:
+                        System.out.println("Por favor ingrese una expresión válida \n\n");
+                    }
+                }
                 break;
               case 2:
-                //System.out.println("Usted está en la sección del cliente");
                 Carrito carro = new Carrito();
-                boolean rolCliente = true;
+                rolCliente = true;
                 while(rolCliente)
                 {
                     //System.out.flush();
@@ -52,7 +354,7 @@ public class Flamma
                     System.out.println("1. ver por Categoría                2. Ver por colección");
                     System.out.println("3. Ver todos los productos          4. Ver carrito");
                     System.out.println("5. Realizar pedido                  6. Salir de la sesión del cliente");
-                    int fil = myObj.nextInt();
+                    fil = myObj.nextInt();
                     switch (fil) 
                     {
                      case 1:
@@ -267,7 +569,6 @@ public class Flamma
                                             break;
                                         default:
                                             System.out.println("opción no válida\n\n");
-                                            break;
                                     }
                                 }
                             }
@@ -286,8 +587,7 @@ public class Flamma
                         rolCliente = false;
                         break;
                      default:
-                        
-                        System.out.println("Por favor ingrese una expresión válida \n\n"); 
+                        System.out.println("Por favor ingrese una expresión válida \n\n");
                     }
                 }
                 break;
